@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Programming\\PVZReborn\\PVZReborn\\src\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\carra\\Downloads\\PVZReborn\\PVZReborn\\src\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DA08CABA-92AC-40F0-B63D-6ACE7814D600}|SexyAppFramework\\SexyAppBase.vcxproj|C:\\Users\\carra\\Downloads\\PVZReborn\\PVZReborn\\src\\Lawn\\Coin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DA08CABA-92AC-40F0-B63D-6ACE7814D600}|SexyAppFramework\\SexyAppBase.vcxproj|solutionrelative:Lawn\\Coin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Coin.cpp",
+              "DocumentMoniker": "C:\\Users\\carra\\Downloads\\PVZReborn\\PVZReborn\\src\\Lawn\\Coin.cpp",
+              "RelativeDocumentMoniker": "Lawn\\Coin.cpp",
+              "ToolTip": "C:\\Users\\carra\\Downloads\\PVZReborn\\PVZReborn\\src\\Lawn\\Coin.cpp",
+              "RelativeToolTip": "Lawn\\Coin.cpp",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-08T00:06:27.362Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
