@@ -218,6 +218,7 @@ public:
 	int								mDiamondsCollected;										//+0x57A4
 	int								mPottedPlantsCollected;									//+0x57A8
 	int								mChocolateCollected;									//+0x57AC
+	
 
 public:
 	Board(LawnApp* theApp);
@@ -474,6 +475,7 @@ public:
 	void							DoTypingCheck(KeyCode theKey);
 	int								CountZombieByType(ZombieType theZombieType);
 	static /*inline*/ bool			IsZombieTypeSpawnedOnly(ZombieType theZombieType);
+	
 };
 extern bool gShownMoreSunTutorial;
 

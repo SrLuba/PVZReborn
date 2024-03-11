@@ -8268,6 +8268,65 @@ void Board::KeyChar(SexyChar theChar)
 		}
 	}
 
+	
+	if (mApp->mGameMode == GameMode::GAMEMODE_ADVENTURE) {
+		// spawn sun
+		if (theChar == _S('s')) {
+			AddCoin(mPrevMouseX,mPrevMouseY,CoinType::COIN_SUN,CoinMotion::COIN_MOTION_COIN);
+			return;
+		}
+		// spawn trophy to win the lvl
+		if (theChar == _S('w')) {
+			AddCoin(mPrevMouseX, mPrevMouseY, CoinType::COIN_TROPHY, CoinMotion::COIN_MOTION_COIN);
+			return;
+		}
+		// spawn a zombie at the mouse grid
+		if (theChar == _S('x')) {
+			Zombie* ZomDebug = AddZombie(ZombieType::ZOMBIE_NORMAL, Zombie::ZOMBIE_WAVE_DEBUG);
+			ZomDebug->RiseFromGrave(PixelToGridX(mPrevMouseX,mPrevMouseY), PixelToGridY(mPrevMouseX,mPrevMouseY));
+		}
+		// spawn coffee
+		if (theChar == _S('c')) {
+			AddPlant(PixelToGridX(mPrevMouseX, mPrevMouseY), PixelToGridY(mPrevMouseX, mPrevMouseY), SeedType::SEED_INSTANT_COFFEE, SeedType::SEED_NONE);
+		}
+
+		// put butter in da face
+		if (theChar == _S('b')) {
+			Zombie* aZombie = nullptr;
+
+			while (IterateZombies(aZombie)) {
+				if (!aZombie->IsDeadOrDying()) {
+					Rect aZombieRect = aZombie->GetZombieRect();
+					if (GetCircleRectOverlap(mPrevMouseX, mPrevMouseY - 20, 45, aZombieRect))
+					{
+						aZombie->ApplyButter();
+						
+					}
+				}
+			}
+		}
+		// release mower when pressing m
+		if (theChar == _S('m')) {
+			LawnMower* LM = nullptr;
+			
+			while (IterateLawnMowers(LM)) {
+				if (!LM->mMowerState == LawnMowerState::MOWER_TRIGGERED || !LM->mMowerState == LawnMowerState::MOWER_ROLLING_IN) {
+					Rect aLawnMowerRect = LM->GetLawnMowerAttackRect();
+					if (GetCircleRectOverlap(mPrevMouseX, mPrevMouseY, 45, aLawnMowerRect)) {
+						LM->StartMower();
+					}
+				}
+
+			}
+		}
+
+
+		if (theChar == _S('h')) {
+			
+		}
+	
+	}
+
 	if (mApp->mGameMode == GameMode::GAMEMODE_CHALLENGE_WAR_AND_PEAS || mApp->mGameMode == GameMode::GAMEMODE_CHALLENGE_WAR_AND_PEAS_2)
 	{
 		if (theChar == _S('w'))
@@ -8428,68 +8487,6 @@ void Board::KeyChar(SexyChar theChar)
 		return;
 	}
 
-	if (theChar == _S('b'))
-	{
-		AddZombie(ZombieType::ZOMBIE_BUNGEE, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('o'))
-	{
-		AddZombie(ZombieType::ZOMBIE_FOOTBALL, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('s'))
-	{
-		AddZombie(ZombieType::ZOMBIE_DOOR, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('L'))
-	{
-		AddZombie(ZombieType::ZOMBIE_LADDER, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('y'))
-	{
-		AddZombie(ZombieType::ZOMBIE_YETI, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('a'))
-	{
-		AddZombie(ZombieType::ZOMBIE_FLAG, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('w'))
-	{
-		AddZombie(ZombieType::ZOMBIE_NEWSPAPER, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('F'))
-	{
-		AddZombie(ZombieType::ZOMBIE_BALLOON, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('n'))
-	{
-		if (StageHasPool())
-		{
-			AddZombie(ZombieType::ZOMBIE_SNORKEL, Zombie::ZOMBIE_WAVE_DEBUG);
-		}
-	}
-	if (theChar == _S('c'))
-	{
-		AddZombie(ZombieType::ZOMBIE_TRAFFIC_CONE, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('m'))
-	{
-		AddZombie(ZombieType::ZOMBIE_DANCER, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('h'))
-	{
-		AddZombie(ZombieType::ZOMBIE_PAIL, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
 	//if (theChar == _S('H')
 	//{
 	//	AddZombie(ZombieType::ZOMBIE_PAIL, Zombie::ZOMBIE_WAVE_DEBUG);
@@ -8499,21 +8496,6 @@ void Board::KeyChar(SexyChar theChar)
 	//	AddZombie(ZombieType::ZOMBIE_PAIL, Zombie::ZOMBIE_WAVE_DEBUG);
 	//	return;
 	//}
-	if (theChar == _S('D'))
-	{
-		AddZombie(ZombieType::ZOMBIE_DIGGER, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('p'))
-	{
-		AddZombie(ZombieType::ZOMBIE_POLEVAULTER, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
-	if (theChar == _S('P'))
-	{
-		AddZombie(ZombieType::ZOMBIE_POGO, Zombie::ZOMBIE_WAVE_DEBUG);
-		return;
-	}
 	if (theChar == _S('R'))
 	{
 		if (StageHasPool())
